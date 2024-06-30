@@ -498,17 +498,11 @@ static void qcom_geni_serial_console_write(struct console *co, const char *s,
 
 	__qcom_geni_serial_console_write(uport, s, count);
 
-
-<<<<<<< HEAD
-	if (locked)
-		spin_unlock_irqrestore(&uport->lock, flags);
-=======
 	if (locked) {
 		if (port->tx_remaining)
 			qcom_geni_serial_setup_tx(uport, port->tx_remaining);
 		uart_port_unlock_irqrestore(uport, flags);
 	}
->>>>>>> v6.9
 }
 
 static void handle_rx_console(struct uart_port *uport, u32 bytes, bool drop)
